@@ -1,0 +1,65 @@
+ssh -i "key.pem" ubuntu@ec2-16-16-183-165.eu-north-1.compute.amazonaws.com
+ssh-keygen
+cd .ssh
+ls -l
+
+sudo apt update
+sudo apt install fontconfig openjdk-17-jre
+java -version
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+ 
+ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+ 
+  sudo apt-get install jenkins
+  SUDO APT INSTALL docker.io
+ 
+  Copy paste public ip:8080
+ 
+  cat /var/lib/jenkins/secrets/initialAdminPassword
+  http://16.16.183.165:8080/
+ 
+  Configured webhook
+ 
+  New item , freestyle project
+ 
+      react_django_demo_app
+Pipeline code 
+ Script
+
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/chxtan/react_django_demo_app.git'
+            }
+        }
+        stage('Testing') {
+            steps {
+                echo "Testing"
+                // You can add your testing commands here if needed
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh "docker build --no-cache -t react_django_demo_app ."
+                }
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    sh "docker run -p 8001:8001 -d react_django_demo_app"
+                }
+            }
+        }
+    }
+}
+Extras done:  
+      sudo usermod -aG docker jenkins
+Forked in master branch also
