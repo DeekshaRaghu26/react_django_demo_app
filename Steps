@@ -20,7 +20,7 @@ sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   Configured webhook
  
   New item , freestyle project
- 
+ New item -> Pipeline project 
       react_django_demo_app
 
 Extras done:  
