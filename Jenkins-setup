@@ -2,7 +2,7 @@ ssh -i "key.pem" ubuntu@ec2-16-16-183-165.eu-north-1.compute.amazonaws.com
 ssh-keygen
 cd .ssh
 ls -l
-
+hello
 sudo apt update
 sudo apt install fontconfig openjdk-17-jre
 java -version
